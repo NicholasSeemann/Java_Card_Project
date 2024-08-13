@@ -110,5 +110,40 @@ public class Main {
         masterList.add(fortyNineCard);
         Card fiftyCard = new Card(";", "Each statement typically appears alone on a line and ends with a ___________, as English sentences end with a period.");
         masterList.add(fiftyCard);
+
+        System.out.println("Please type the number of cards you want in your list (must be between 1-50, inclusive)");
+        while(true){
+            try{
+                numCards = scnr.nextInt();
+                if((numCards > 0) && (numCards <= 50)){
+                    break;
+                }
+                else{
+                    System.out.println("The number you've entered is out of the allowed range, please type a number which is between 1-50");
+                }
+            }
+            catch (InputMismatchException exception){
+                System.out.println("What you've entered is not a valid input, please type a number between 1-50");
+                scnr.next();
+            }
+        }
+        System.out.println("");
+        System.out.println("Generating your list of flashcards...");
+        ArrayList<Card> userList = new ArrayList<Card>();
+        ArrayList<Integer> usedInts = new ArrayList<Integer>();
+        usedInts.add(-1);
+
+        for(int i = 1; i <= numCards; i++){
+            int randInt;
+            boolean isDuplicate;
+            do {
+                randInt = rand.nextInt(50);
+                isDuplicate = usedInts.contains(randInt);
+            } while (isDuplicate);
+            userList.add(masterList.get(randInt));
+            usedInts.add(randInt);
+        }
+
+        
     }
 }
