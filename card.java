@@ -7,7 +7,7 @@ public class Card{
         answer = "Answer goes here";
     }
 
-    public Card(String givenQuestion, String givenAnswer){
+    public Card(String givenAnswer, String givenQuestion){
         question = givenQuestion;
         answer = givenAnswer;
     }

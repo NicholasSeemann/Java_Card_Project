@@ -144,6 +144,49 @@ public class Main {
             usedInts.add(randInt);
         }
 
+        System.out.println("Your cards are ready, we will send a description of the term to you and you are to type the asnwer in response");
+        System.out.println("You may enter 'q' if you would like to quit at anytime. Remember, it must be lowercase!");
+        System.out.println("");
+
+        Integer score = 0;
+        Integer scoreStreak = 0;
+        scnr.nextLine();
+        for(int i = 0; i < userList.size(); i++){
+            if(scoreStreak == 3){
+                System.out.println("Nice! You got three correct answers in a row!");
+            }
+            else if(scoreStreak == 10){
+                System.out.println("Impressive, you got ten correct answers in a row!");
+            }
+            else if(scoreStreak == 25){
+                System.out.println("25 correct answers in a row...are you cheating? -_-");
+            }
+
+            (userList.get(i)).printQuestion();
+            String userAnswer = scnr.nextLine();
+
+            if(userAnswer.equals("q")){
+                break;
+            }
+
+            if ((userList.get(i)).answerCheck(userAnswer)){
+                System.out.println("Congratulations! You got the right answer.");
+                System.out.println("");
+                scoreStreak += 1;
+                score += 1;
+            }
+            else{
+                System.out.print("Sorry! The answer was ");
+                (userList.get(i)).printAnswer();
+                System.out.print(", you'll get it next time!");
+                scoreStreak = 0;
+                System.out.println("");
+            }
+        }
+        System.out.println("Your final score was " + score + "/" + userList.size());
         
+        if((score == userList.size()) && (userList.size() == 50)){
+            System.out.println("Wow, you answered every single card correctly! You're ready for the final test!");
+        }
     }
 }
