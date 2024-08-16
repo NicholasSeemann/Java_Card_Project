@@ -13,6 +13,7 @@ public class Main{
 
         new GUI();
 
+        //Creates cards which will be selected at random
         Card firstCard = new Card("error-checking code", "___________________is code a programmer writes to detect and handle errors that occur during program execution");
         masterList.add(firstCard);
         Card secondCard = new Card("&&", "Which logical operator evaluates true when both of its two operands are true?");
@@ -136,6 +137,8 @@ public class Main{
         ArrayList<Integer> usedInts = new ArrayList<Integer>();
         usedInts.add(-1);
 
+        /*Creates list of cards the user will go through,
+          no duplicates will be put in the list*/
         for(int i = 1; i <= numCards; i++){
             int randInt;
             boolean isDuplicate;
@@ -153,6 +156,9 @@ public class Main{
 
         Integer score = 0;
         Integer scoreStreak = 0;
+        
+        /*Loop that gives the user the definition of each flashcard
+          prompting them to give an answer*/
         scnr.nextLine();
         for(int i = 0; i < userList.size(); i++){
             if(scoreStreak == 3){
