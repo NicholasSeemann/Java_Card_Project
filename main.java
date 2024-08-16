@@ -12,7 +12,6 @@ public class Main{
         Integer numCards = 0;
 
         GUI gui = new GUI();
-        gui.changeLabel("em kcilC");
         //Creates cards which will be selected at random
         Card firstCard = new Card("error-checking code", "___________________is code a programmer writes to detect and handle errors that occur during program execution");
         masterList.add(firstCard);
