@@ -11,14 +11,13 @@ import javax.swing.JTextField;
 
 public class GUI{
 
+    JFrame frame = new JFrame();
+    JButton button = new JButton("Click me");
+    JTextField userText = new JTextField("Type Here");
+    JLabel label = new JLabel("Number of clicks: 0");
+    JPanel panel = new JPanel();
+
     public GUI(){
-        JFrame frame = new JFrame();
-
-        JButton button = new JButton("Click me");
-        JTextField userText = new JTextField("Type Here");
-        JLabel label = new JLabel("Number of clicks: 0");
-
-        JPanel panel = new JPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         panel.setLayout(new GridLayout(0, 1));
         panel.add(button);
@@ -33,6 +32,6 @@ public class GUI{
     }
 
     public void changeLabel(String newLabel){
-
+        label.setText(newLabel);
     }
 }
