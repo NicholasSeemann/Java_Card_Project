@@ -1,16 +1,14 @@
 import java.util.Scanner;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
 
 public class Main{
     public static void main(String[] args) {
-        Scanner scnr = new Scanner(System.in);
         Random rand = new Random();
         ArrayList<Card> masterList = new ArrayList<Card>();
         Integer numCards = 0;
-
+        Scanner scnr = new Scanner(System.in);
         GUI gui = new GUI();
         //Creates cards which will be selected at random
         Card firstCard = new Card("error-checking code", "___________________is code a programmer writes to detect and handle errors that occur during program execution");

@@ -37,10 +37,17 @@ public class GUI{
         label.setText(newLabel);
     }
 
-    public String returnUserText(){
+    public void changeSecondLabel(String newLabel){
+        secondLabel.setText(newLabel);
+    }
+
+    public String returnUserTextString(){
         String userInput = userText.getText();
         return userInput;
     }
 
-
+    public int returnUserTextInt(){
+        int userInput = Integer.valueOf(userText.getText());
+        return userInput;
+    }
 }
