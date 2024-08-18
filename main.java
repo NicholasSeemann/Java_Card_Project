@@ -2,8 +2,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
+import javax.swing.*;
 
-public class Main{
+public class Main extends Thread {
     public static void main(String[] args) {
         Random rand = new Random();
         ArrayList<Card> masterList = new ArrayList<Card>();
@@ -112,20 +113,25 @@ public class Main{
         Card fiftyCard = new Card(";", "Each statement typically appears alone on a line and ends with a ___________, as English sentences end with a period.");
         masterList.add(fiftyCard);
 
-        System.out.println("Please type the number of cards you want in your list (must be between 1-50, inclusive)");
         while(true){
             try{
-                numCards = scnr.nextInt();
+                String userInput = JOptionPane.showInputDialog("Please type the number of cards you want in your list (must be between 1-50, inclusive).\n If you wish to shutdown the program, enter \"Q.\"");
+                if(userInput.equals("q") || userInput.equals("Q")){
+                    System.exit(0);
+                }
+                numCards = Integer.parseInt(userInput);
                 if((numCards > 0) && (numCards <= 50)){
                     break;
                 }
                 else{
-                    System.out.println("The number you've entered is out of the allowed range, please type a number which is between 1-50");
+                    JOptionPane.showMessageDialog(null, "The number you've entered is out of the allowed range, please type a number which is between 1-50");
                 }
             }
-            catch (InputMismatchException exception){
-                System.out.println("What you've entered is not a valid input, please type a number between 1-50");
-                scnr.next();
+            catch (NullPointerException e){
+                JOptionPane.showMessageDialog(null, "If you wish to exit the program, please type \"Q\" into the text field and click \"OK.\"");
+            }
+            catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "What you've entered is not a valid input, please type a number between 1-50");
             }
         }
         System.out.println("");
