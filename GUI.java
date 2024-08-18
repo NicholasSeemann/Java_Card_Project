@@ -1,10 +1,8 @@
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 import javax.swing.JTextField;
@@ -12,7 +10,6 @@ import javax.swing.JTextField;
 public class GUI{
 
     JFrame frame = new JFrame();
-    JButton button = new JButton("Click me to enter your answer");
     JTextField userText = new JTextField("Type Here");
     JLabel label = new JLabel("Number of clicks: 0");
     JLabel secondLabel = new JLabel();
@@ -24,30 +21,25 @@ public class GUI{
         panel.add(label);
         panel.add(secondLabel);
         panel.add(userText);
-        panel.add(button);
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("IST Flashcards");
         frame.pack();
         frame.setVisible(true);
+        frame.setSize(800, 600);
     }
 
     public void changeLabel(String newLabel){
         label.setText(newLabel);
     }
 
-    public void changeSecondLabel(String newLabel){
-        secondLabel.setText(newLabel);
+    public void changeSecondLabel(String newLabelText){
+        secondLabel.setText(newLabelText);
     }
 
-    public String returnUserTextString(){
+    public String returnUserText(){
         String userInput = userText.getText();
-        return userInput;
-    }
-
-    public int returnUserTextInt(){
-        int userInput = Integer.valueOf(userText.getText());
         return userInput;
     }
 }

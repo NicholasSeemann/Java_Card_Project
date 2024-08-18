@@ -165,13 +165,13 @@ public class Main extends Thread {
         scnr.nextLine();
         for(int i = 0; i < userList.size(); i++){
             if(scoreStreak == 3){
-                System.out.println("Nice! You got three correct answers in a row!");
+                gui.changeSecondLabel("Nice job, you got three in a row!");
             }
             else if(scoreStreak == 10){
-                System.out.println("Impressive, you got ten correct answers in a row!");
+                gui.changeSecondLabel("Impressive, you got ten correct answers in a row!");
             }
             else if(scoreStreak == 25){
-                System.out.println("25 correct answers in a row...are you cheating? -_-");
+                gui.changeSecondLabel("25 correct answers in a row...are you cheating? -_-");
             }
 
             (userList.get(i)).printQuestion();
