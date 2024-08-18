@@ -4,7 +4,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 import javax.swing.JTextField;
 
 public class GUI{

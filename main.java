@@ -1,5 +1,3 @@
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
@@ -9,7 +7,6 @@ public class Main extends Thread {
         Random rand = new Random();
         ArrayList<Card> masterList = new ArrayList<Card>();
         Integer numCards = 0;
-        Scanner scnr = new Scanner(System.in);
         GUI gui = new GUI();
         //Creates cards which will be selected at random
         Card firstCard = new Card("error-checking code", "___________________is code a programmer writes to detect and handle errors that occur during program execution");
