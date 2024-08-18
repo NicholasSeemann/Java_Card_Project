@@ -1,6 +1,6 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Random;
 import javax.swing.*;
 
@@ -153,17 +153,28 @@ public class Main extends Thread {
             usedInts.add(randInt);
         }
 
-        System.out.println("Your cards are ready, we will send a description of the term to you and you are to type the asnwer in response");
-        System.out.println("You may enter 'q' if you would like to quit at anytime. Remember, it must be lowercase!");
-        System.out.println("");
+        gui.changeLabel("Your cards are ready, we will send a description of the term to you and you are to type the asnwer in response.");
+        gui.changeSecondLabel("You may click the 'X' in the top right corner if you'd like to quit.");
+        gui.changeThirdLabel("Remember, this is a speed quiz, so you will only have ten seconds to answer each question! Your first question will appear soon...");
+        
+        try{
+        Thread.sleep(15000);
+        }
+        catch (InterruptedException e){
+            System.out.print("oopsie daisy");
+        }
 
         Integer score = 0;
         Integer scoreStreak = 0;
         
         /*Loop that gives the user the definition of each flashcard
           prompting them to give an answer*/
-        scnr.nextLine();
         for(int i = 0; i < userList.size(); i++){
+            gui.changeLabel("");
+            gui.changeSecondLabel("");
+            gui.changeThirdLabel("");
+            gui.clearTextField();
+
             if(scoreStreak == 3){
                 gui.changeSecondLabel("Nice job, you got three in a row!");
             }
@@ -174,31 +185,49 @@ public class Main extends Thread {
                 gui.changeSecondLabel("25 correct answers in a row...are you cheating? -_-");
             }
 
-            (userList.get(i)).printQuestion();
-            String userAnswer = scnr.nextLine();
+            gui.changeLabel((userList.get(i)).printQuestion());
 
-            if(userAnswer.equals("q")){
+            try{
+                Thread.sleep(10000);
+            }
+            catch (InterruptedException e){
+                System.out.print("oopsie daisy");
+            }
+
+            String userAnswer = gui.returnUserText();
+
+            if(userAnswer.equals("q") || userAnswer.equals("Q")){
                 break;
             }
 
             if ((userList.get(i)).answerCheck(userAnswer)){
-                System.out.println("Congratulations! You got the right answer.");
-                System.out.println("");
+                gui.changeLabel("Congratulations! You got the right answer.");
                 scoreStreak += 1;
                 score += 1;
+                try{
+                    Thread.sleep(5000);
+                }
+                catch (InterruptedException e){
+                    System.out.print("oopsie daisy");
+                }
             }
             else{
-                System.out.print("Sorry! The answer was ");
-                (userList.get(i)).printAnswer();
-                System.out.print(", you'll get it next time!");
+                gui.changeLabel("Sorry! The answer was " + (userList.get(i)).printAnswer());
+                gui.changeSecondLabel("You'll get it next time!");
                 scoreStreak = 0;
-                System.out.println("");
+                try{
+                    Thread.sleep(5000);
+                }
+                catch (InterruptedException e){
+                    System.out.print("oopsie daisy");
+                }
             }
         }
-        System.out.println("Your final score was " + score + "/" + userList.size());
-        
+
+        gui.changeLabel("Your final score was " + score + "/" + userList.size());
+        gui.changeSecondLabel("");
         if((score == userList.size()) && (userList.size() == 50)){
-            System.out.println("Wow, you answered every single card correctly! You're ready for the final test!");
+            gui.changeSecondLabel("Wow, you answered every single card correctly! You're ready for the final test!");
         }
     }
 }

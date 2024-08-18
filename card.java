@@ -12,12 +12,12 @@ public class Card{
         answer = givenAnswer;
     }
 
-    public void printQuestion(){
-        System.out.println(question);
+    public String printQuestion(){
+        return question;
     }
 
-    public void printAnswer(){
-        System.out.println(answer);
+    public String printAnswer(){
+        return answer;
     }
 
     public boolean answerCheck(String userAnswer){

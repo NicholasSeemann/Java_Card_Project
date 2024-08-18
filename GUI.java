@@ -10,9 +10,10 @@ import javax.swing.JTextField;
 public class GUI{
 
     JFrame frame = new JFrame();
-    JTextField userText = new JTextField("Type Here");
+    JTextField userText = new JTextField("");
     JLabel label = new JLabel("Number of clicks: 0");
     JLabel secondLabel = new JLabel();
+    JLabel thirdLabel = new JLabel();
     JPanel panel = new JPanel();
 
     public GUI(){
@@ -20,6 +21,7 @@ public class GUI{
         panel.setLayout(new GridLayout(0, 1));
         panel.add(label);
         panel.add(secondLabel);
+        panel.add(thirdLabel);
         panel.add(userText);
 
         frame.add(panel, BorderLayout.CENTER);
@@ -36,6 +38,14 @@ public class GUI{
 
     public void changeSecondLabel(String newLabelText){
         secondLabel.setText(newLabelText);
+    }
+
+    public void changeThirdLabel(String newLabel){
+        thirdLabel.setText(newLabel);
+    }
+
+    public void clearTextField(){
+        userText.setText("");
     }
 
     public String returnUserText(){
