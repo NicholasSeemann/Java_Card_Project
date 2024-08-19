@@ -131,8 +131,7 @@ public class Main extends Thread {
                 JOptionPane.showMessageDialog(null, "What you've entered is not a valid input, please type a number between 1-50");
             }
         }
-        System.out.println("");
-        System.out.println("Generating your list of flashcards...");
+
         ArrayList<Card> userList = new ArrayList<Card>();
         ArrayList<Integer> usedInts = new ArrayList<Integer>();
         usedInts.add(-1);
@@ -201,7 +200,7 @@ public class Main extends Thread {
                 else if(scoreStreak == 25){
                     gui.changeSecondLabel("25 correct answers in a row...are you cheating? -_-");
                 }
-                
+
                 try{
                     Thread.sleep(5000);
                 }
