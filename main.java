@@ -172,23 +172,13 @@ public class Main extends Thread {
             gui.changeThirdLabel("");
             gui.clearTextField();
 
-            if(scoreStreak == 3){
-                gui.changeSecondLabel("Nice job, you got three in a row!");
-            }
-            else if(scoreStreak == 10){
-                gui.changeSecondLabel("Impressive, you got ten correct answers in a row!");
-            }
-            else if(scoreStreak == 25){
-                gui.changeSecondLabel("25 correct answers in a row...are you cheating? -_-");
-            }
-
             gui.changeLabel((userList.get(i)).printQuestion());
 
             try{
                 Thread.sleep(10000);
             }
             catch (InterruptedException e){
-                System.out.print("oopsie daisy");
+                System.out.print("Thread has been interrupted");
             }
 
             String userAnswer = gui.returnUserText();
@@ -201,6 +191,17 @@ public class Main extends Thread {
                 gui.changeLabel("Congratulations! You got the right answer.");
                 scoreStreak += 1;
                 score += 1;
+
+                if(scoreStreak == 3){
+                    gui.changeSecondLabel("Nice job, you got three in a row!");
+                }
+                else if(scoreStreak == 10){
+                    gui.changeSecondLabel("Impressive, you got ten correct answers in a row!");
+                }
+                else if(scoreStreak == 25){
+                    gui.changeSecondLabel("25 correct answers in a row...are you cheating? -_-");
+                }
+                
                 try{
                     Thread.sleep(5000);
                 }

@@ -28,7 +28,7 @@ public class GUI{
         frame.setTitle("IST Flashcards");
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(800, 600);
+        frame.setSize(900, 600);
     }
 
     public void changeLabel(String newLabel){
